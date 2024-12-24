@@ -1,0 +1,23 @@
+.arrow {
+  cursor: pointer;
+}
+
+.active {
+  border-radius: 5px;
+  background-color: #FEAF00;
+  color: #000;
+  transition: all 0.4s;
+  -webkit-transition: all 0.4s;
+  -moz-transition: all 0.4s;
+  -ms-transition: all 0.4s;
+  -o-transition: all 0.4s;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+}
+
+.active:hover {
+  background-color: #FEAF00 !important;
+  color: #000 !important;
+}/*# sourceMappingURL=SideBar.css.map */
