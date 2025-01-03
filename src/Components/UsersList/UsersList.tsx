@@ -2,10 +2,12 @@ import axios from 'axios';
 import { useEffect, useState } from 'react'
 import Table from 'react-bootstrap/Table';
 import { MdDelete, MdEdit } from 'react-icons/md';
-import { useNavigate } from 'react-router-dom';
-import React from "react";
+import { Link, useNavigate } from 'react-router-dom';
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
+import { toast } from 'react-toastify';
 
-interface Users{
+ interface Users{
   age: number;
  image : string;
   id: number,
@@ -16,6 +18,17 @@ interface Users{
   birthDate: string,
 }
 export default function UsersList() {
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const [userId, setUserId] = useState<number | null>(null);
+  const [userData, setUserData] = useState<Partial<Users>>({});
+
+  const handleShow = (user:Users) => {
+    setShow(true);
+   setUserId(user.id);
+   setUserData(user);
+  }
   const [users, setUsers]= useState<Users[]>([]);
   const getUsers= async()=>{
     try {
@@ -31,17 +44,33 @@ export default function UsersList() {
 getUsers();
   },[])
   const navigate = useNavigate();
-  const moveToAddUser = ()=>{
-           navigate("/dashboard/add");
-  }
+
   const editUser = (id: number) => {  
     navigate(`/dashboard/edit/${id}`);
   } 
+  const deleteUser = async()=>{
+    try {
+      const response = await axios.delete(`https://dummyjson.com/users/${userId}`);
+      console.log(response);
+      handleClose();
+      toast.success("User deleted successfully",{
+        position: "top-center",
+        autoClose: 2000,
+      });
+      getUsers();
+    } catch (error) {
+      console.log(error);
+      toast.error("Failed to delete user",{
+        position: "top-center",
+        autoClose: 2000,
+      });
+    }
+  }
   return (
-    <div className='container-fluid'>
+    <div className='container-fluid pt-3'>
     <div className='d-flex justify-content-between mx-3'>
       <h3>Users list</h3>
-      <button onClick={moveToAddUser} className='btn btn-warning text-white'>ADD NEW USER</button>
+      <Link to="/dashboard/add" className='btn btn-warning text-white'>ADD NEW USER</Link>
       
     </div>
     <hr />
@@ -73,13 +102,27 @@ getUsers();
             <td>{user.phone}</td>
             <td>{user.birthDate}</td>
             <td className='text-warning'>
-            <MdDelete size={25} className='me-3'/>
+            <MdDelete  onClick={()=>handleShow(user)} size={25} className='me-3'/>
             <MdEdit onClick={() => editUser(user.id)}  size={25}/>
             </td>
            </tr>
       ))}
       </tbody>
     </Table>
+    <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>DELETE USER</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>Are you sure that you want to delete {userData?.firstName} {userData?.lastName}?</Modal.Body>
+        <Modal.Footer>
+          <Button variant="primary" onClick={handleClose}>
+            No
+          </Button>
+          <Button variant="danger" onClick={()=>deleteUser()}>
+            Yes
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </div>
   )
 }

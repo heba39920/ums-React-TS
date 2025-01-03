@@ -1,14 +1,15 @@
-import AuthLayout from "../Components/Layouts/AuthLayout/AuthLayout"
-import MasterLayout from "../Components/Layouts/MasterLayout/MasterLayout"
-import NotFound from "../Components/NotFound/NotFound";
-import Home from "../Components/Home/Home";
-import UsersList from "../Components/UsersList/UsersList";
+import AuthLayout from "./Components/Layouts/AuthLayout/AuthLayout"
+import MasterLayout from "./Components/Layouts/MasterLayout/MasterLayout"
+import NotFound from "./Components/NotFound/NotFound";
+import Home from "./Components/Home/Home";
+import UsersList from "./Components/UsersList/UsersList";
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import AddUser from "../Components/addUser/addUser";
-import Profile from "../Components/profile/profile";
-import SignIn from "../Components/SignIn/SignIn";
+import AddUser from "./Components/AddUser/AddUser";
+import Profile from "./Components/Profile/Profile";
+import SignIn from "./Components/SignIn/SignIn";
 import { ToastContainer } from "react-toastify";
-import EditUser from "../Components/EditUser/EditUser";
+import EditUser from "./Components/EditUser/EditUser";
+
 
 
 
@@ -39,8 +40,10 @@ const routes = createBrowserRouter([{path:"/", element: <AuthLayout/>,
 
   return (
     <>
+
       <ToastContainer/>
  <RouterProvider router={routes}/>
+
     </>
   )
 }

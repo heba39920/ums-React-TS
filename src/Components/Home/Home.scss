@@ -1,0 +1,51 @@
+.home{
+    background-image: url(../../src/assets/pexels-zhuhehuai-729982.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position:center ;
+    height:1000px;
+    text-align: center;
+   color: #fff;
+   text-shadow:   
+   -1px -1px 0 black,  
+   1px -1px 0 black,  
+   -1px 1px 0 black,  
+   1px 1px 0 black;
+   
+}
+
+.home h1{
+    font-size: 40px;
+    font-weight: 800;
+}
+.home p{
+    font-size: 20px;
+    font-style: italic;
+    font-weight: 600;
+}
+.home button{
+    text-transform: uppercase;
+    font-weight: 700;
+    background-color: #fff;
+    padding: 10px 20px;
+}
+.home-main{
+   background:#feae00bb;
+}
+
+@media screen and (max-width: 768px){
+    .home{
+        height: 800px;
+    }
+    .home h1{
+        font-size: 20px;
+    }
+    .home p{
+        font-size: 14px;
+    }
+    .home button{
+        font-size: 14px;
+        padding: 5px 10px;
+    }
+    
+}

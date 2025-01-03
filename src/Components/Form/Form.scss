@@ -1,0 +1,18 @@
+.form{
+    position: relative;
+}
+
+.profile-img{
+    position: absolute;
+    top: -50px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    background-color: #fff;
+    display: none;
+    overflow: hidden;
+
+}
