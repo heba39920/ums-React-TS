@@ -28,7 +28,7 @@
 }
 
 .home-main {
-  background: rgba(254, 174, 0, 0.7333333333);
+  background-color: rgba(254, 174, 0, 0.7333333333);
 }
 
 @media screen and (max-width: 768px) {

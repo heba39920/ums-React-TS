@@ -68,10 +68,13 @@ export default function SignIn() {
       <div className="container-fluid">
         <div className="row justify-content-center align-items-center vh-100">
           <div className="col-md-5 bg-white p-5 rounded">
-            <div className="title text-center">
-              <h3 className="signIn-head mb-5">User Management System</h3>
-              <h4>SIGN IN</h4>
-              <small>Enter your credentials to access your account</small>
+            <div className="title">
+              
+              <h3 className="signIn-head mb-5"><span className="head-span"></span> User Management System</h3>
+             <div className="text-center">
+             <h4>SIGN IN</h4>
+             <small>Enter your credentials to access your account</small>
+             </div>
             </div>
             <form onSubmit={handleSubmit(onsubmit)}>
               <label htmlFor="username" className="mb-3 mt-3">Username</label>

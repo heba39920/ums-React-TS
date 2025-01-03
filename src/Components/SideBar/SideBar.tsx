@@ -27,13 +27,17 @@ export default function SideBar() {
    
     <div className='sidebar-container'>
       <Sidebar className='vh-100' collapsed={isCollapsed}>
+<div className='d-flex justify-content-center align-items-center logo'>
+<div className="sidebar-span"></div>
+<div className="sidebar-span2">UMS</div>
+  </div> 
        <div className='text-end m-2'>
         {isCollapsed? <FaRegArrowAltCircleRight className='arrow'  size={20} onClick={handleCollapse}/> : <FaRegArrowAltCircleLeft size={20} className='arrow'  onClick={handleCollapse}/> }
         
         
         </div>
-        <div className="head text-center my-4">
-          <img className='rounded-circle w-50' src={userData?.image} alt="profile image" />
+        <div className="head text-center my-5">
+          <img className='rounded-circle w-50 mt-5' src={userData?.image} alt="profile image" />
           <h6 className='my-2 '>{userData?.firstName} {userData?.lastName} </h6>
           <h6 className='text-warning'>Admin</h6>
         </div>
